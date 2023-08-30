@@ -19,3 +19,19 @@ app.get("/api", (req, res) => {
 
 // DB
 const mysql = require("mysql");
+// connect to db
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "mydb"
+})
+connection.connect((err) => {
+    if (err) console.log(err);
+    else console.log("MySQL server is connected");
+})
+// create query
+connection.query("SELECT * FROM pokemon", (err, res) => {
+    if (err) console.log(err);
+    else console.log(res)
+})
