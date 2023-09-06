@@ -11,8 +11,8 @@ app.listen(port, () => console.log("connected to port", port));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 // routes
-const fridge = require("./routes/r_fridge")
-app.use("/api/fridge", fridge)
+const r_employees = require("./routes/r_employees")
+app.use("/api/employees", r_employees)
 app.get("/api", (req, res) => {
     res.send("welcome to root");
 })

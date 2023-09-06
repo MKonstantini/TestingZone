@@ -1,25 +1,24 @@
 const mongoose = require("mongoose");
 
 // create schema
-const foodSchema = new mongoose.Schema({
+const employeeSchema = new mongoose.Schema({
     name: {
+        type: String,
         required: true,
         unique: true,
-        type: String,
         minlength: 2,
         maxlength: 15       
     },
-    cost: {
-        required: true,
+    age: {
         type: Number
     },
-    isHealthy: {
+    isWorking: {
         type: Boolean
     }
 });
 
 // create model (schema + correlating collection)
-const Food = mongoose.model("fridge", foodSchema);
+const Employee = mongoose.model("employees", employeeSchema);
 
 // export model
-module.exports = Food;
+module.exports = Employee;
