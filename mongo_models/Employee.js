@@ -17,7 +17,7 @@ const employeeSchema = new mongoose.Schema({
     }
 });
 
-// create model (schema + correlating collection)
+// create model (correlating collection + schema)
 const Employee = mongoose.model("employees", employeeSchema);
 
 // export model

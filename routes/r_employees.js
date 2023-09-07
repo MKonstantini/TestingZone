@@ -18,8 +18,8 @@ router.post("/", async (req, res) => {
         if (error) return res.status(400).send(error);
         
         // check for if body exists
-        let resEmployee = await Employee.findOne({name: req.body.name});
-        if (resEmployee) return res.status(400).send("error: entry already exists!");
+        let dbEmployee = await Employee.findOne({name: req.body.name});
+        if (dbEmployee) return res.status(400).send("error: entry already exists!");
 
         // post body in DB
         const newEmployee = new Employee(req.body);
@@ -30,6 +30,16 @@ router.post("/", async (req, res) => {
         
     } catch (err) {
         res.status(400).send(err);
+    }
+})
+
+// get all employees
+router.get("/", async (req, res) => {
+    try {
+        const employees = await Employee.find();
+        res.status(200).send(employees)
+    } catch (err) {
+        res.status().send(err)
     }
 })
 
